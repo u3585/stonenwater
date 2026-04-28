@@ -44,6 +44,22 @@
             a {
             cursor: default; /* 기본 커서로 설정 */
             }
+		/* 클릭 가능한 영역 */
+    .click-area {
+        position: absolute;
+        top: 70%;   /* 동영상 높이의 30% 지점 */
+        left: 90%;  /* 동영상 너비의 40% 지점 */
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        background: rgba(255, 0, 0, 0.2); /* 디버그용 색상 (투명하게) */
+    }
+    /* 실제 서비스 시 배경 제거 */
+    .click-area.hidden {
+        background: transparent;
+		video {
+			border: 5px solid #4CAF50;
+		}
 </style>
 <body><center>
     <video src="intro2002.mp4" width="720" height="480" autoplay muted loop playsinline></video><br>
