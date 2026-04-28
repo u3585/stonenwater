@@ -44,11 +44,22 @@
             a {
             cursor: default; /* 기본 커서로 설정 */
             }
+		 body {
+        background: #222;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .video-container {
+        position: relative;
+        display: inline-block;
+		
 		/* 클릭 가능한 영역 */
     .click-area {
         position: absolute;
-        top: 70%;   /* 동영상 높이의 30% 지점 */
-        left: 90%;  /* 동영상 너비의 40% 지점 */
+        top: 79%;   /* 동영상 높이의 30% 지점 */
+        left: 78%;  /* 동영상 너비의 40% 지점 */
         width: 50px;
         height: 50px;
         cursor: pointer;
@@ -59,12 +70,35 @@
         background: transparent;
 	}
 		video {
-			border: 5px solid #4CAF50;
+			width:720px;
+			height:480px;
 		}
 </style>
-<body><center>
+<body>
+	<div class="video-container">
+    <video autoplay muted loop>
+        <source src="intro2002.mp4" type="video/mp4">
+        브라우저가 video 태그를 지원하지 않습니다.
+    </video>
+
+    <!-- 클릭 영역 -->
+    <div class="click-area hidden" onclick="goToPage()"></div>
+</div>
+
+<script>
+function goToPage() {
+    // 원하는 페이지로 이동
+    window.location.href = "main.html";
+}
+</script>
+	
+	
+	
+	
+	<center>
+	<!--
     <video src="intro2002.mp4" width="720" height="480" autoplay muted loop playsinline></video><br>
-    <p><a href="main.html">보충대리공간 스톤앤워터 비공식 자료실 들어가기</a></p>
+    <p><a href="main.html">보충대리공간 스톤앤워터 비공식 자료실 들어가기</a></p>-->
     </center>
 </body>
 </html>
