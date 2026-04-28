@@ -6,26 +6,7 @@
                 src: url('hand.ttf') format('opentype');
                 font-size:20px;
             }  
-            .styled_text1 {
-            font-size:20px;
-            font-family:"Noto Sans KR", sans-serif;
-            }
-            .styled_text2 {
-            font-size:12px;
-            font-family:"Noto Sans KR", sans-serif;
-            }
-            .styled_text3 {
-            font-family: 'Nanum NeuRisNeuRisCe', sans-serif;
-            src: url('hand.ttf') format('opentype');
-            }
-            .styled_text4 {
-                margin-left: 20px;
-            }
-			.styled_text0 {
-            font-size:16px;
-            font-family:"Noto Sans KR", sans-serif;
-            }
-            
+          
             a {
             text-decoration: none;
 	        }
@@ -44,23 +25,16 @@
             a {
             cursor: default; /* 기본 커서로 설정 */
             }
-		 body {
-        display: flex;
-			 justify-content:center;
-			 padding-top:20px;
-             
-    }
-    <!--.video-container {
+		 
+    .video-container {
         position: relative;
-        display: inline-block; -->
-
-	
-		.video-container {
-			position:absolute;
-			top:20px;
-			left:center;
+	width:720px;
+	height:480px;
+ 		}
+video {
+	width:100%;
+	height:100%;
 		}
-		
 		/* 클릭 가능한 영역 */
     .click-area {
         position: absolute;
@@ -68,17 +42,18 @@
         left: 73%;  /* 동영상 너비의 73% 지점 */
         width: 50px;
         height: 50px;
-        cursor: pointer;
+        cursor: default;
         background: rgba(255, 0, 0, 0.2); /* 디버그용 색상 (투명하게) */
     }
     /* 실제 서비스 시 배경 제거 */
     .click-area.hidden {
-        background: transparent;
+        		    background: transparent;
+		   }
+    
+.linktext {
+	margin-top:0;
+	margin-left:250;
 	}
-		video {
-			width:720px;
-			height:480px;
-		}
 </style>
 <body>
 	<div class="video-container">
@@ -86,9 +61,8 @@
         <source src="intro2002.mp4" type="video/mp4">
         브라우저가 video 태그를 지원하지 않습니다.
     </video>
-		 <caption><a href="main.html">보충대리공간 스톤앤워터 비공식 자료실 들어가기</a></caption> 
 
-    <!-- 클릭 영역 -->
+<!-- 클릭 영역 -->
     <div class="click-area hidden" onclick="goToPage()"></div>
 </div>
 <script>
@@ -97,6 +71,6 @@ function goToPage() {
     window.location.href = "main.html";
 }
 </script>
-   
+<p class="linktext"><a href="main.html">보충대리공간 스톤앤워터 비공식 자료실 들어가기</a></p>
 </body>
 </html>
