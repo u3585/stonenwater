@@ -1,10 +1,42 @@
-<html><head>
-<title>현재전시</title>
-<style>
-.text-box {
+<html>
+    <title>보충대리공간 스톤앤워터</title>
+    <style type="text/css">
+    td {
+	
+       	font:8pt 돋움 vernada;
+        	color:#996600; text-decoration:none;
+        	border-width:1px;
+         }
+   #sm1 td, #sm2 td, #sm3 td, #sm4 td,#sm5 td, #sm6 td, #sm7 td, #sm8 td
+     {
+	padding-left:20px
+      }
+  
+   #td2 {
+	background-color:#FFD942;
+            font:8pt 돋움 vernada;
+            color:#FF9900; text-decoration:none;
+            border-width:1px;
+           }
+  
+   #back{
+ 	   width:200px;
+	   height:500px;
+	   position:absolute;
+	   top:0px;
+	   left:0px;
+	   z-index:-1
+    	}
+    
+     A:link {color:#996600;text-decoration:none;}
+     A:visited {color:#996600;text-decoration:none;}
+     A:hover {color:#ffffff;text-decoration:none;}
+     A:active {color:#FFCE00;text-decoration:none;}
+
+     .text-box {
 border:2px solid #F5F4F0;
 background-color:#F5F4F4;
-padding:10px;
+padding:50px;
 width:558;
 height:414;
 overflow-y:auto;
@@ -16,17 +48,58 @@ color:#2f8cb9;
 .title {
 color:d29e00;
 }
-</style>
 
-<body text="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" tracingsrc="si1.png" tracingopacity="100">
-<table width="622" border="0" cellspacing="0" cellpadding="0" height="100%" bordercolor="#999999" bgcolor="#F5F4F4">
-  <tbody><tr> 
-    <td height="11" align="left" valign="top" bordercolor="#AE7600" bgcolor="#AE7600" width="622">
-	<img src="si1_top.gif" width="246" height="14" align="top"></td>
-  </tr>
-  <tr> 
-    <td height="446" valign="middle" align="center" bordercolor="#F5F4F4" bgcolor="#F5F4F4">
-<div class="text-box">
+.video-container {
+        position: relative;
+	width:168px;
+	height:82px;
+ 		}
+video {
+	width:100%;
+	height:100%;
+		}
+
+.video-container1 {
+        position: relative;
+	width:260px;
+	height:195px;
+ 		}
+video1 {
+	width:100%;
+	height:100%;
+		}    
+</style>
+    
+<script language="javascript">
+   
+    function init(){
+     sm1.style.display='none'
+     sm2.style.display='none'
+     sm3.style.display='none'
+     sm4.style.display='none' 
+     sm5.style.display='none'
+    
+     }
+     
+    var last="sm1"
+     function view(sm){
+     document.all(last).style.display='none'
+     document.all(sm).style.display=''
+      last=sm
+      } 
+     
+  </script>
+<body onload="init()" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table border="0" cellpadding="0" cellspacing="0" valign="top" align="left">
+<tr>
+<td width="180" height="18" bgcolor="#FFD942"></td>
+<td width="622" height="18" valign="top" bgcolor="#AE7600"><img src="top.gif" width="246" height="14"></td>
+<tr>
+    <td width="180" height="98" valign="top" align="center" bgcolor="#FFD942"><a href="stonenwater.html"><img src="logo.gif" width="169" height="85" border="0"></a>
+    </td>
+    <td width="622" valign="top" bgcolor="#F5F4F4" rowspan='2'>
+      <p>&nbsp;</p>
+      <div class="text-box">
 <span class="title"><b>이것이 생활속의 예술이다! 『Living Furniture展』</b><br>
 2002. 6. 16 ~ 8.16<br>
 Opening 6. 16 am 11</span><br>
@@ -75,30 +148,144 @@ supplement space STONE & WATER의 Living Furniture 展은 이 두가지 생각�
 이번 전시회를 통해서 관객들은 구체적인 생활 속에서의 예술 작품을 만끽하고,
 그로 인하여 예술작품, 그리고 작가, 그리고 지금까지 멀게만 느껴졌던 미술과 많이 친근해지는 경험을 할 수 있을 것이다.
 </div>
-   </td>
-  </tr>
-  <tr> 
-    <td height="195" align="left" valign="top"> 
-      <table width="622" border="0" cellpadding="0" cellspacing="0" bgcolor="#F5F4F4" height="195">
-        <tbody><tr> 
-          <td height="195" valign="top" align="right"><p><font face="돋움" size="2" color="#FF9900">이미지를 
-              클릭하시면 전시페이지로 갑니다<font color="#F5F4F4">.</font></font></p>
-            </td>
-          <td width="280" valign="top"> 
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-              <tbody><tr> 
-                <td height="195" valign="top" align="left"><a href="https://neolook.com/archives/20020710a" target="_blank" rel="noopener noreferrer"><img src="sel.gif" width="261" height="196" border="0"></td>
+<p>&nbsp;</p>
+<font face="돋움" size="2" color="#FF9900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이미지를 클릭하시면 전시페이지로 갑니다</font><a href="https://neolook.com/archives/20020710a" target="_blank" rel="noopener noreferrer"><img src="sel.gif" width="261" height="196" border="0" align="right"></a>
+<p>&nbsp;</p><br>
+<p><center><img src="copyright2.gif" width="622" height="18" border="0"></center></p>
+
+</td>
+</tr>
+  
+<tr bgcolor="#FFD942"> 
+    <td height="511" valign="top"> <div id="back" onmouseout="init()"></div>
+      
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td>
+            <table width="180" height="92%" align="right">
+              <tr>
+          
+                <td width="180" height="368" align="right" valign="top" bgcolor="#FFD942"> 
+                  <font color="#FFD942">. </font> 
+                  <table width="180" align="right">
+                    <tr> 
+                      <td class="aa" id="out2" onmouseover="view('sm1')" style="cursor:hand" bgcolor="#FFD942"><font color="#FFD942">.. 
+                        .</font><img src="box_r.gif">&nbsp;<b>about us</b> 
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td align="left" valign="top"> 
+                        <table id="sm1" class="aa" width="100%">
+                          <tr> 
+                            <td style="cursor:hand" bgcolor="#FFD942"><img src="box_r.gif"><a href="stonenwater.html" target="m">supplementary space? <br>
+                              <font color="#FFD942">.....</font>&nbsp;stone & water?<br>
+                              <font color="#FFD942">.....</font>&nbsp;stone & water 설립취지 </a> </td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr> 
+                      <td class="aa" id="out2" style="cursor:hand" onmouseover="view('sm2')" bgcolor="#FFD942"><font color="#FFD942">. 
+                        ..</font><img src="box_r.gif">&nbsp;<b>exhibition</b></td>
+                    </tr>
+                    <tr> 
+                      <td> <table id="sm2" width="100%">
+                          <tr> 
+                            <td style="cursor:hand"><img src="box_r.gif"><a href="current.html" target="m">&nbsp;current 
+                              exhibition</a> </td>
+                          </tr>
+                          <tr> 
+                            <td style="cursor:hand"><img src="box_r.gif"><a href="https://u3585.github.io/stonenwater/2002/2002-2-0.html" target="m">&nbsp;upcoming 
+                              exhibition</a> </td>
+                          </tr>
+                          <tr> 
+                            <td style="cursor:hand"><img src="box_r.gif">&nbsp;past 
+                              exhibition </td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr> 
+                      <td style="cursor:hand" id="out2" class="aa" onmouseover="view('sm3')" bgcolor="#FFD942"><font color="#FFD942">. 
+                        ..</font><img src="box_r.gif">&nbsp;<b>new</b></td>
+                    </tr>
+                    <tr> 
+                      <td> <table id="sm3" width="100%">
+                          <tr> 
+                            <td style="cursor:hand"><img src="box_r.gif"><a href="critic.html" target="m">&nbsp;criticism 
+                              <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(기사 및 보도자료)</a> </td>
+                          </tr>
+                          <tr> 
+                            <td style="cursor:hand"><img src="box_r.gif"><a href="seminar.html" target="m">&nbsp;seminar 
+                              (세미나)</a></td>
+                          </tr>
+                          <tr> 
+                            <td style="cursor:hand"><img src="box_r.gif"><a href="etc.html" target="m">&nbsp;etc.(기타자료)</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr> 
+                      <td class="aa" id="out2" onmouseover="view('sm4')" style="cursor:hand" bgcolor="#FFD942"><font color="#FFD942">. 
+                        ..</font><img src="box_r.gif">&nbsp;<b>board</b> </td>
+                    </tr>
+                    <tr> 
+                      <td align="left" valign="top"> <table id="sm4" class="aa" width="100%">
+                          <tr> 
+                            <td style="cursor:hand"><img src="box_r.gif"><a href="free1.html" target="m">자유게시판</a> </td>
+                          </tr>
+                          <tr> 
+                            <td style="cursor:hand"><img src="box_r.gif"><a href="free2.html" target="m">쟁점게시판</a> </td>
+                          </tr>
+                          <tr> 
+                            <td><img src="box_r.gif"><!--<a href="guest.html" target="m">-->방명록</a> </td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr> 
+                      <td class="aa" id="out2" onmouseover="view('sm5')" style="cursor:hand" bgcolor="#FFD942"><font color="#FFD942">. 
+                        ..</font><img src="box_r.gif">&nbsp;<b>membership</b> 
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td align="left" valign="top"> <table id="sm5" class="aa" width="100%">
+                          <tr> 
+                            <td style="cursor:hand"><img src="box_r.gif"> 
+                              <!--<a href="" target="m">-->로그인</a>
+                            </td>
+                          </tr>
+                          <tr> 
+                            <td style="cursor:hand"><img src="box_r.gif"><!--<a href="" target="m">-->&nbsp;로그아웃</a></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    
+                    <tr> 
+                      <td class="aa" id="out3" style="cursor:hand" bgcolor="#FFD942"><font color="#FFD942">. 
+                        ..</font><img src="box_r.gif"><a href="link.html" target="m">&nbsp;<b>link</b></a> 
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td class="aa" id="out3" style="cursor:hand"><font color="#FFD942">. 
+                        ..</font><img src="box_r.gif"><a href="sitemap.html" target="m">&nbsp;<b>sitemap</b></a> 
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td class="aa" id="out3" style="cursor:hand"><font color="#FFD942">. 
+                        ..</font><img src="box_r.gif"><a href="contact.html" target="m">&nbsp;<b>오시는&nbsp;길</b> 
+                        </a> </td>
+                    </tr>
+                  </table></td>
               </tr>
-            </tbody></table>
-          </td>
-        </tr>
-      </tbody></table>
-    </td>
-  </tr>
-  <tr> 
-    <td height="35" valign="bottom" align="left"> 
-      <p><img src="copyright2.gif" width="622" height="18" border="0" align="bottom"></p>
-      <p>&nbsp;</p></td>
-  </tr>
-</tbody>
-</body></html>
+              <tr>
+                <td height="98" align="center" valign="bottom">
+                        <div class="video-container">
+    <video autoplay muted loop>
+        <source src="intro.mp4" type="video/mp4">
+        브라우저가 video 태그를 지원하지 않습니다.
+    </video>
+  </div>
+  </td></tr>
+            </table></td></tr>
+      </table></td></tr> 
+</table>
+</body>
+</html>
