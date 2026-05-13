@@ -1,5 +1,5 @@
 async function loadExhibitions(type) {
-  const response = await fetch("exhibitions.json");
+  const response = await fetch("exhibition.json");
   const data = await response.json();
 
   const today = new Date();
