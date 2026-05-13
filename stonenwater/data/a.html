@@ -1,34 +1,14 @@
-Html<!DOCTYPE html>
-<html lang="ko">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>로컬 JSON 불러오기</title>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js"></script>
+    <title>제목</title>
 </head>
 <body>
-    <h1>제품 목록</h1>
-    <ul id="product-list"></ul>
-
-    <script>
-        fetch('exhibition.json') // 같은 폴더에 있는 JSON 파일
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("파일을 불러올 수 없습니다.");
-                }
-                return response.json();
-            })
-            .then(products => {
-                const list = document.getElementById('product-list');
-                products.forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = `${item.id} - ${item.title}`;
-                    list.appendChild(li);
-                });
-            })
-            .catch(error => {
-                console.error("JSON 로드 실패:", error);
-            });
-    </script>
+    <div class="json-wrapper">
+    	<ul id="jsonListWrap"></ul>
+    </div>
 </body>
-</html>
-
 
