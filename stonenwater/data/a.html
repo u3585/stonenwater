@@ -1,1 +1,37 @@
+Html<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로컬 JSON 불러오기</title>
+</head>
+<body>
+    <h1>제품 목록</h1>
+    <ul id="product-list"></ul>
+
+    <script>
+        fetch('exhibition.json') // 같은 폴더에 있는 JSON 파일
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("파일을 불러올 수 없습니다.");
+                }
+                return response.json();
+            })
+            .then(products => {
+                const list = document.getElementById('product-list');
+                products.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `${item.id} - ${item.title}`;
+                    list.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error("JSON 로드 실패:", error);
+            });
+    </script>
+</body>
+</html>
+
+
+
+원하시나요? 그러면 HTML + async/await JSON 불러오기 버전으로 드리겠습니다.
 
