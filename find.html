@@ -21,42 +21,49 @@
   <!-- Pagefind 스크립트 불러오기 -->
   <script src="https://u3585.github.io/stonenwater/pagefind/pagefind.js"></script>
   <script>
-    window.addEventListener('DOMContentLoaded', async () => {
-      // Pagefind 초기화
-      const pagefind = await window.pagefind.init();
+  window.addEventListener('DOMContentLoaded', async () => {
+    const pagefind = await window.pagefind.init();
 
-      const searchInput = document.querySelector('#search');
-      const resultsContainer = document.querySelector('#results');
+    const searchInput = document.querySelector('#search');
+    const resultsContainer = document.querySelector('#results');
 
-      searchInput.addEventListener('input', async (event) => {
-        const query = event.target.value.trim();
+    searchInput.addEventListener('input', async (event) => {
+      const query = event.target.value.trim();
 
-        // 검색어 없으면 결과 비우기
-        if (!query) {
-          resultsContainer.innerHTML = '';
-          return;
-        }
-
-        // 검색 실행
-        const search = await pagefind.search(query);
-
+      // 검색어 없으면 결과 비우기
+      if (!query) {
         resultsContainer.innerHTML = '';
+        return;
+      }
 
-        for (const result of search.results) {
-          const data = await result.data();
+      // 검색 실행
+      const search = await pagefind.search(query);
 
-          const item = document.createElement('div');
-          item.className = 'result-item';
+      // 결과 영역 초기화
+      resultsContainer.innerHTML = '';
 
-          item.innerHTML = `
-            <a href="${data.url}">${data.meta.title || data.url}</a>
-            <div class="result-excerpt">${data.excerpt || ''}</div>
-          `;
+      // 🔥 검색 결과가 0개일 때 메시지 출력
+      if (search.results.length === 0) {
+        resultsContainer.innerHTML = '<div>검색 결과가 없습니다.</div>';
+        return;
+      }
 
-          resultsContainer.appendChild(item);
-        }
-      });
+      // 검색 결과 출력
+      for (const result of search.results) {
+        const data = await result.data();
+
+        const item = document.createElement('div');
+        item.className = 'result-item';
+
+        item.innerHTML = `
+          <a href="${data.url}">${data.meta.title || data.url}</a>
+          <div class="result-excerpt">${data.excerpt || ''}</div>
+        `;
+
+        resultsContainer.appendChild(item);
+      }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
