@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안양천 프로젝트 아카이브 검색</title>
+    <style>
+        /* 전체 기본 여백 및 폰트 설정 */
+        body {
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 검색창과 버튼을 가로로 나란히 배치 */
+        .search-container {
+            display: flex;
+            gap: 10px; /* 검색창과 버튼 사이의 간격 */
+            margin-bottom: 30px;
+        }
+
+        #search-input {
+            flex: 1; /* 남은 가로 공간을 모두 차지하도록 설정 */
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* 검색 버튼 디자인 */
+        #search-button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #search-button:hover {
+            background-color: #555;
+        }
+
+        /* 검색 결과 목록 디자인 */
+        .result-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .result-item h3 {
+            margin: 0 0 10px 0;
+        }
+
+        .result-item a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        /* 검색 결과가 없을 때의 텍스트 디자인 */
+        .no-results {
+            color: #666;
+            font-size: 16px;
+            text-align: center;
+            padding: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>전시 아카이브 검색</h1>
+    
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="전시 제목이나 작가 이름을 검색하세요">
+        <button id="search-button">검색</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        // 1. Pagefind 검색 엔진 백그라운드 로드
+        async function loadPagefind() {
+            try {
+                // github pages에 올라간 pagefind.js 파일을 불러옵니다.
+                window.pagefind = await import("https://u3585.github.io/stonenwater/pagefind/pagefind.js");
+            } catch (e) {
+                console.error("Pagefind 데이터를 불러오지 못했습니다. GitHub에 폴더가 정상적으로 올라갔는지 확인해주세요.");
+            }
+        }
+        loadPagefind();
+
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const resultsDiv = document.getElementById('results');
+
+        // 2. 실제 검색을 수행하는 함수
+        async function performSearch() {
+            if (!window.pagefind) return;
+            
+            const query = searchInput.value.trim();
+            
+            // 검색어가 비어있으면 결과창을 비우고 중단
+            if (!query) {
+                resultsDiv.innerHTML = "";
+                return;
+            }
+
+            // Pagefind에 검색 요청
+            const search = await window.pagefind.search(query);
+            resultsDiv.innerHTML = ""; // 이전 검색 결과 지우기
+
+            // 3. 검색된 단어가 없을 경우의 처리
+            if (search.results.length === 0) {
+                resultsDiv.innerHTML = '<div class="no-results">검색할 수 없습니다</div>';
+                return;
+            }
+
+            // 4. 검색 결과가 있을 경우 화면에 HTML로 그려주기
+            for (const result of search.results) {
+                const data = await result.data();
+                resultsDiv.innerHTML += `
+                    <div class="result-item">
+                        <h3><a href="${data.url}">${data.meta.title || data.url}</a></h3>
+                        <p>${data.excerpt}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // 검색 버튼을 클릭했을 때 검색 실행
+        searchButton.addEventListener('click', performSearch);
+        
+        // 검색창에서 엔터키(Enter)를 눌렀을 때도 검색 실행되도록 편의성 추가
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    </script>
+</body>
+</html>
