@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>전시 검색</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  .item { border-bottom: 1px solid #ddd; padding: 15px 0; display: flex; gap: 20px; }
+  .item img { width: 150px; height: auto; border-radius: 8px; }
+  .info { max-width: 600px; }
+  .title { font-size: 20px; font-weight: bold; }
+  .artist { color: #555; }
+</style>
+</head>
+<body>
+
+<h2>전시 검색</h2>
+<input type="text" id="search" placeholder="전시명, 작가명, 연도 검색" style="width:300px; padding:8px;">
+<div id="results"></div>
+
+<script>
+let exhibitions = [];
+
+// JSON 파일 불러오기
+async function loadData() {
+    const response = await fetch("./data/data.json");
+    exhibitions = await response.json();
+}
+
+document.getElementById("search").addEventListener("input", function() {
+    const q = this.value.trim();
+    const resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = "";
+
+    if (!q) return;
+
+    // 검색 로직
+    const results = exhibitions.filter(item =>
+        (item.title && item.title.includes(q)) ||
+        (item.artist && item.artist.includes(q)) ||
+        (item.year && String(item.year).includes(q)) ||
+        (item.keywords && item.keywords.some(k => k.includes(q)))
+    );
+
+    // 결과 출력
+    results.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "item";
+
+        div.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="info">
+                <div class="title">${item.title}</div>
+                <div class="artist">${item.artist}</div>
+                <div class="year">${item.year}</div>
+                <div class="period">${item.period}</div>
+            </div>
+        `;
+
+        resultsDiv.appendChild(div);
+    });
+});
+
+loadData();
+</script>
+
+</body>
+</html>
