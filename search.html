@@ -68,7 +68,7 @@ function doSearch() {
             
             <div class="info">
                 <div class="year">전시연도 : ${item.year}</div>
-                <div class="title">전시제목 : ${item.title}</div>
+                <div class="title">전시제목 : <a href="${item.url}" target="_blank">${item.title}</a></div>
                 <div class="artist">전시작가 : ${item.artist.replace(q, `<b>${q}</b>`)}</div>
               
                 
