@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>전시 검색</title>
+<title>스톤앤워터 검색엔진</title>
 <style>
   body { font-family: Arial, sans-serif; padding: 20px; }
   .item { border-bottom: 1px solid #ddd; padding: 15px 0; display: flex; gap: 20px; }
@@ -11,11 +11,13 @@
   .title { font-size: 20px; font-weight: bold; }
   .artist { color: #555; }
   #noresult { margin-top: 20px; color: red; font-weight: bold; }
+
+  
 </style>
 </head>
 <body>
 
-<h2>전시 검색</h2>
+<h2>보충대리공간 스톤앤워터 검색엔진</h2>
 
 <input type="text" id="search" placeholder="전시명, 작가명, 연도 검색" style="width:300px; padding:8px;">
 <button id="btnSearch" style="padding:8px 12px;">검색</button>
@@ -47,6 +49,33 @@ function doSearch() {
 
     if (!q) return;
 
+  function formatArtists(artistString, keyword) {
+    const artists = artistString.split(",").map(a => a.trim());
+    const index = artists.findIndex(a => a.includes(keyword));
+
+    // 검색어가 없으면 원본 그대로 반환
+    if (index === -1) return artistString;
+
+    // 검색된 작가를 맨 앞으로 이동
+    const mainArtist = artists[index];
+    const nextArtists = artists.slice(index + 1, index + 3); // 뒤로 2명만
+    const remainingCount = artists.length - (1 + nextArtists.length);
+
+    // 검색된 작가만 볼드 처리
+    const highlightedMain = mainArtist.replace(
+        new RegExp(keyword, "gi"),
+        match => `<b>${match}</b>`
+    );
+
+    let result = [highlightedMain, ...nextArtists].join(", ");
+
+    if (remainingCount > 0) {
+        result += `,  외 ${remainingCount}명`;
+    }
+
+    return result;
+}
+
     const results = exhibitions.filter(item =>
         (item.year && String(item.year).includes(q)) ||
         (item.title && item.title.includes(q)) ||
@@ -69,7 +98,7 @@ function doSearch() {
             <div class="info">
                 <div class="year">전시연도 : ${item.year}</div>
                 <div class="title">전시제목 : <a href="${item.url}" target="_blank">${item.title}</a></div>
-                <div class="artist">전시작가 : ${item.artist.replace(q, `<b>${q}</b>`)}</div>
+                <div class="artist">${formatArtists(item.artist, q)}</div>
               
                 
             </div>
