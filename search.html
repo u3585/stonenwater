@@ -77,19 +77,21 @@ function doSearch() {
     return result;
 }
 
-const lowerQ = q.toLowerCase();
-const results = exhibitions.filter(item =>
-    (item.year && String(item.year).toLowerCase().includes(lowerQ)) ||
-    (item.title && item.title.toLowerCase().includes(lowerQ)) ||
-    (item.artist && item.artist.toLowerCase().includes(lowerQ)) ||
-               
-        (item.keywords && item.keywords.some(k => k.includes(q)))
-    );
+const normalize = str => str.toLowerCase().replace(/\s+/g, "");
 
-    if (results.length === 0) {
-        noResult.style.display = "block";
-        return;
-    }
+const nq = normalize(q);
+
+const results = exhibitions.filter(item => {
+    const title = item.title ? normalize(item.title) : "";
+    const artist = item.artist ? normalize(item.artist) : "";
+    const year = item.year ? String(item.year) : "";
+
+    return (
+        year.includes(nq) ||
+        title.includes(nq) ||
+        artist.includes(nq)
+    );
+});
 
     results.forEach(item => {
         const div = document.createElement("div");
