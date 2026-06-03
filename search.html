@@ -76,11 +76,11 @@ function doSearch() {
     return result;
 }
 
-    const lowerQ = q.toLowerCase();
-    const results = exhibitions.filter(item =>
-        (item.year && String(item.year).includes(q)) ||
-        (item.title.toLowerCase && item.title.includes(lowerQ)) ||
-        (item.artist.toLowerCase && item.artist.includes(lowerQ)) ||
+const lowerQ = q.toLowerCase();
+const results = exhibitions.filter(item =>
+    (item.year && String(item.year).toLowerCase().includes(lowerQ)) ||
+    (item.title && item.title.toLowerCase().includes(lowerQ)) ||
+    (item.artist && item.artist.toLowerCase().includes(lowerQ)) ||
                
         (item.keywords && item.keywords.some(k => k.includes(q)))
     );
