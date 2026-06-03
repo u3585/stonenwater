@@ -76,10 +76,11 @@ function doSearch() {
     return result;
 }
 
+    const lowerQ = q.toLowerCase();
     const results = exhibitions.filter(item =>
         (item.year && String(item.year).includes(q)) ||
-        (item.title && item.title.includes(q)) ||
-        (item.artist && item.artist.includes(q)) ||
+        (item.title.toLowerCase && item.title.includes(lowerQ)) ||
+        (item.artist.toLowerCase && item.artist.includes(lowerQ)) ||
                
         (item.keywords && item.keywords.some(k => k.includes(q)))
     );
